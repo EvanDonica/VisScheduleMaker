@@ -10,7 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('')
+mongoose.connect(`${process.env.DATABASE}`)
+.then(() => console.log('DB Connected!'))
+.catch(err => {
+    console.log(Error, err.message);
+});
 
 app.listen(3001, () => console.log('Server Running'));
 
